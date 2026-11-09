@@ -1,0 +1,112 @@
+{
+  "id": "round-history",
+  "type": "ae/round-history",
+  "version": "1.0.0",
+  "operations": {
+    "create": {
+      "arguments": [
+        "settings?:{maxRounds:integer}"
+      ],
+      "returns": "History {maxRounds,rounds:RoundEntry[]}"
+    },
+    "push": {
+      "arguments": [
+        "history:History",
+        "entry:Record<string,unknown> {no,level,voided,winners?,...game fields}"
+      ],
+      "returns": "History (winners default to none, voided to false; any other fields are kept in entry.extra and come back from list; numbers must rise, the newest maxRounds kept; throws on a bad entry or fields that are not plain JSON)"
+    },
+    "list": {
+      "arguments": [
+        "history:History"
+      ],
+      "returns": "Record<string,unknown>[] (oldest first: {no,level,voided,winners,...game fields})"
+    },
+    "createHistoryApi": {
+      "arguments": [
+        "settings?:{maxRounds:integer}"
+      ],
+      "returns": "{settings,create(),push,list} (maxRounds bound)"
+    },
+    "validateSettings": {
+      "arguments": [
+        "settings?:Partial<HistorySettings>"
+      ],
+      "returns": "HistorySettings"
+    },
+    "appendRound": {
+      "arguments": [
+        "history:History",
+        "entry:{no,level,winners:{playerId,amount}[],voided}"
+      ],
+      "returns": "History (newest maxRounds kept; throws unless no rises)"
+    },
+    "appendVoided": {
+      "arguments": [
+        "history:History",
+        "no:number",
+        "level:number"
+      ],
+      "returns": "History"
+    },
+    "checkEntry": {
+      "arguments": [
+        "entry:RoundEntry"
+      ],
+      "returns": "RoundEntry (copy; throws on a bad entry)"
+    },
+    "clearHistory": {
+      "arguments": [
+        "history:History"
+      ],
+      "returns": "History (empty, same maxRounds)"
+    },
+    "recentRounds": {
+      "arguments": [
+        "history:History",
+        "count:number"
+      ],
+      "returns": "RoundEntry[] (newest count, oldest first)"
+    },
+    "findRound": {
+      "arguments": [
+        "history:History",
+        "no:number"
+      ],
+      "returns": "RoundEntry|null"
+    },
+    "totalsByPlayer": {
+      "arguments": [
+        "history:History"
+      ],
+      "returns": "Record<playerId,{won:number,rounds:number}> (voided rounds ignored)"
+    },
+    "exportRounds": {
+      "arguments": [
+        "history:History"
+      ],
+      "returns": "string (ndjson with sha256 per record)"
+    },
+    "importRounds": {
+      "arguments": [
+        "text:string",
+        "settings?:Partial<HistorySettings>"
+      ],
+      "returns": "History (throws on a checksum mismatch; keeps the newest maxRounds)"
+    },
+    "RoundHistory.appending": {
+      "arguments": [
+        "entry:HistoryEntry"
+      ],
+      "returns": "RoundHistory (apple, android)"
+    },
+    "RoundHistory.chipsWon": {
+      "arguments": [],
+      "returns": "Map<playerId,number> (apple, android)"
+    }
+  },
+  "notes": "Two forms of the same history. Typed: appendRound(history, {no,level,winners,voided}). Engine: push(history, plain object) and list(history) for a game that records its own fields beside the result (for example the pot or the showdown kind); those fields are stored in RoundEntry.extra and flattened again by list. Apple and Android RoundHistory read no, level, winners and voided and ignore extra.",
+  "types": {
+    "RoundEntry": "{no:integer,level:integer,winners:{playerId:string,amount:integer}[],voided:boolean,extra?:Record<string,unknown>}"
+  }
+}

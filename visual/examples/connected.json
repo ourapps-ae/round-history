@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "id": "round-history-connected",
+  "title": "Round history: connected consumer",
+  "status": "example",
+  "view": "component",
+  "focus": "component",
+  "definitions": [
+    {
+      "id": "ourapps-ae.round-history",
+      "name": "Round history",
+      "kind": "component",
+      "status": "example",
+      "package": "ourapps-ae/round-history",
+      "version": "0.3.0",
+      "ports": [
+        {
+          "id": "round-history",
+          "name": "Round history",
+          "direction": "output",
+          "kind": "interface",
+          "type": "ae/round-history",
+          "version": "1.0.0"
+        }
+      ],
+      "settings": [
+        {
+          "id": "maxRounds",
+          "name": "Maxrounds",
+          "type": "number",
+          "required": false,
+          "secret": false,
+          "default": 50
+        }
+      ]
+    },
+    {
+      "id": "consumer",
+      "name": "Example application consumer",
+      "kind": "application",
+      "status": "example",
+      "revision": "0.1.0",
+      "ports": [
+        {
+          "id": "round-history",
+          "name": "Round history",
+          "direction": "input",
+          "kind": "interface",
+          "type": "ae/round-history",
+          "version": "1.0.0",
+          "required": true,
+          "cardinality": "one"
+        }
+      ],
+      "settings": []
+    }
+  ],
+  "instances": [
+    {
+      "id": "component",
+      "name": "Round history",
+      "definition": "ourapps-ae.round-history",
+      "configuration": {}
+    },
+    {
+      "id": "consumer",
+      "name": "Example consumer",
+      "definition": "consumer",
+      "configuration": {}
+    }
+  ],
+  "connections": [
+    {
+      "source": {
+        "instance": "component",
+        "port": "round-history"
+      },
+      "target": {
+        "instance": "consumer",
+        "port": "round-history"
+      }
+    }
+  ]
+}

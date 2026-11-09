@@ -1,0 +1,45 @@
+{
+  "format": 1,
+  "stores": [
+    {
+      "id": "rounds",
+      "schema": {
+        "name": "ae/round-history-records",
+        "version": "1.0.0",
+        "file": "interfaces/round.schema.json"
+      }
+    }
+  ],
+  "export": [
+    {
+      "format": "ndjson",
+      "portable": true,
+      "operation": "exportRounds",
+      "description": "A history line (maxRounds) then one line per round, oldest first. Each line carries the SHA-256 of its record. A round line also carries an `extra` object when the game recorded other fields."
+    }
+  ],
+  "import": [
+    {
+      "format": "ndjson",
+      "portable": true,
+      "operation": "importRounds"
+    }
+  ],
+  "steps": [],
+  "verification": {
+    "counts": true,
+    "checksums": "sha256 per record",
+    "sampleReadBack": 20,
+    "endToEnd": "tests/web.test.ts"
+  },
+  "limits": {
+    "maxMegabytes": 1,
+    "requiresStop": false,
+    "cannotPreserve": [
+      "rounds older than maxRounds, which are dropped when the history is read"
+    ]
+  },
+  "retention": {
+    "afterRemovalDays": 30
+  }
+}

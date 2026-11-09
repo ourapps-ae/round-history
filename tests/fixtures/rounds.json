@@ -1,0 +1,12 @@
+{
+  "maxRounds": 3,
+  "entries": [
+{"no":1,"level":1,"winners":[{"playerId":"a","amount":100}],"voided":false},
+{"no":2,"level":1,"winners":[{"playerId":"b","amount":250},{"playerId":"a","amount":30}],"voided":false},
+{"no":3,"level":2,"winners":[],"voided":true},
+{"no":4,"level":2,"winners":[{"playerId":"a","amount":400},{"playerId":"a","amount":50}],"voided":false},
+{"no":5,"level":3,"winners":[{"playerId":"c","amount":1000}],"voided":false}
+  ],
+  "expectedKeptNumbers": [3, 4, 5],
+  "expectedChipsWon": {"a": 450, "c": 1000}
+}

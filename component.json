@@ -1,0 +1,277 @@
+{
+  "format": 1,
+  "kind": "component",
+  "identity": {
+    "name": "ourapps-ae/round-history",
+    "version": "0.3.0",
+    "sourceRevision": "19905b75dbea89fbfd424d67fe26c81aaed0e018",
+    "sourceTreeDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "licenceStatus": "deferred"
+  },
+  "facilities": [
+    {
+      "id": "round-history",
+      "description": "Append rounds, keep the newest N, query and export them"
+    }
+  ],
+  "documents": {
+    "contract": "CONTRACT.md",
+    "interfaces": [
+      "interfaces/round-history.json",
+      "interfaces/round.schema.json",
+      "suitability.json",
+      "migration.json"
+    ],
+    "examples": [
+      "examples/consumer.ts"
+    ],
+    "licenceNotice": "LICENCE"
+  },
+  "collect": [
+    {
+      "id": "maxRounds",
+      "type": "integer",
+      "grammar": "integer",
+      "required": false,
+      "secret": false,
+      "default": 50
+    }
+  ],
+  "files": [
+    {
+      "path": "CONTRACT.md",
+      "executable": false
+    },
+    {
+      "path": "INSTRUCTIONS.md",
+      "executable": false
+    },
+    {
+      "path": "LICENCE",
+      "executable": false
+    },
+    {
+      "path": "SOURCE.md",
+      "executable": false
+    },
+    {
+      "path": "examples/consumer.ts",
+      "executable": false
+    },
+    {
+      "path": "implementation/android/src/main/java/ae/history/RoundHistory.kt",
+      "executable": false
+    },
+    {
+      "path": "implementation/apple/Sources/RoundHistory.swift",
+      "executable": false
+    },
+    {
+      "path": "implementation/server/history.ts",
+      "executable": false
+    },
+    {
+      "path": "interfaces/round-history.json",
+      "executable": false
+    },
+    {
+      "path": "interfaces/round.schema.json",
+      "executable": false
+    },
+    {
+      "path": "migration.json",
+      "executable": false
+    },
+    {
+      "path": "suitability.json",
+      "executable": false
+    },
+    {
+      "path": "tests/android/Main.kt",
+      "executable": false
+    },
+    {
+      "path": "tests/apple/main.swift",
+      "executable": false
+    },
+    {
+      "path": "tests/fixtures/rounds.json",
+      "executable": false
+    },
+    {
+      "path": "tests/native.py",
+      "executable": false
+    },
+    {
+      "path": "tests/web.test.ts",
+      "executable": false
+    },
+    {
+      "path": "tools.lock.json",
+      "executable": false
+    },
+    {
+      "path": "visual/definition.json",
+      "executable": false
+    },
+    {
+      "path": "visual/examples/connected.json",
+      "executable": false
+    },
+    {
+      "path": "visual/output/connected.png",
+      "executable": false
+    },
+    {
+      "path": "visual/output/connected.svg",
+      "executable": false
+    },
+    {
+      "path": "visual/output/description.md",
+      "executable": false
+    }
+  ],
+  "artefacts": [
+    {
+      "source": "implementation/android/src/main/java/ae/history/RoundHistory.kt",
+      "destination": "components/round-history/android/src/main/java/ae/history/RoundHistory.kt",
+      "template": false,
+      "executable": false
+    },
+    {
+      "source": "implementation/apple/Sources/RoundHistory.swift",
+      "destination": "components/round-history/apple/Sources/RoundHistory.swift",
+      "template": false,
+      "executable": false
+    },
+    {
+      "source": "implementation/server/history.ts",
+      "destination": "components/round-history/server/history.ts",
+      "template": false,
+      "executable": false
+    }
+  ],
+  "dependencies": [],
+  "provides": [
+    {
+      "id": "round-history",
+      "type": "ae/round-history",
+      "version": "1.0.0",
+      "path": "interfaces/round-history.json"
+    }
+  ],
+  "requires": [],
+  "visual": {
+    "definition": "visual/definition.json",
+    "examples": [
+      "visual/examples/connected.json"
+    ],
+    "outputs": [
+      "visual/output/connected.svg",
+      "visual/output/connected.png"
+    ],
+    "descriptions": [
+      "visual/output/description.md"
+    ]
+  },
+  "capabilities": {
+    "hosts": [],
+    "secrets": [],
+    "writes": [
+      "components/round-history/android/src/main/java/ae/history/RoundHistory.kt",
+      "components/round-history/apple/Sources/RoundHistory.swift",
+      "components/round-history/server/history.ts"
+    ]
+  },
+  "infrastructure": {
+    "accounts": [],
+    "costStatus": "unmeasured",
+    "deployedReason": "No deployed service; injected resources and local library functions only."
+  },
+  "verification": [
+    {
+      "id": "web",
+      "root": "package",
+      "argv": [
+        "node",
+        "--test",
+        "tests/web.test.ts"
+      ],
+      "cwd": ".",
+      "prepare": [],
+      "tools": {
+        "node": "26.5.0"
+      },
+      "fixtures": [
+        "tests/fixtures/rounds.json"
+      ],
+      "locks": [
+        "tools.lock.json"
+      ],
+      "network": false,
+      "timeoutSeconds": 120,
+      "expectedExit": 0,
+      "scope": "required-local",
+      "requirements": []
+    },
+    {
+      "id": "apple",
+      "root": "package",
+      "argv": [
+        "python3",
+        "tests/native.py",
+        "apple"
+      ],
+      "cwd": ".",
+      "prepare": [],
+      "tools": {
+        "python3": "3.12.8",
+        "swiftc": "6.4.2"
+      },
+      "fixtures": [
+        "tests/apple/main.swift",
+        "tests/fixtures/rounds.json"
+      ],
+      "locks": [
+        "tools.lock.json"
+      ],
+      "network": false,
+      "timeoutSeconds": 120,
+      "expectedExit": 0,
+      "scope": "platform",
+      "requirements": []
+    },
+    {
+      "id": "android",
+      "root": "package",
+      "argv": [
+        "python3",
+        "tests/native.py",
+        "android"
+      ],
+      "cwd": ".",
+      "prepare": [],
+      "tools": {
+        "python3": "3.12.8",
+        "kotlinc": "2.2.0",
+        "java": "26.0.1"
+      },
+      "fixtures": [
+        "tests/android/Main.kt",
+        "tests/fixtures/rounds.json"
+      ],
+      "locks": [
+        "tools.lock.json"
+      ],
+      "network": false,
+      "timeoutSeconds": 120,
+      "expectedExit": 0,
+      "scope": "platform",
+      "requirements": []
+    }
+  ],
+  "upgrade": {
+    "policy": "patch",
+    "migration": "files-only"
+  }
+}

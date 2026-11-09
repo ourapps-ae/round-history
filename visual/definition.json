@@ -1,0 +1,28 @@
+{
+  "id": "ourapps-ae.round-history",
+  "name": "Round history",
+  "kind": "component",
+  "status": "example",
+  "package": "ourapps-ae/round-history",
+  "version": "0.3.0",
+  "ports": [
+    {
+      "id": "round-history",
+      "name": "Round history",
+      "direction": "output",
+      "kind": "interface",
+      "type": "ae/round-history",
+      "version": "1.0.0"
+    }
+  ],
+  "settings": [
+    {
+      "id": "maxRounds",
+      "name": "Maxrounds",
+      "type": "number",
+      "required": false,
+      "secret": false,
+      "default": 50
+    }
+  ]
+}

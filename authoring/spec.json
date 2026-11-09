@@ -1,0 +1,119 @@
+{
+  "name": "round-history",
+  "version": "0.3.0",
+  "title": "Round history",
+  "description": "A bounded record of rounds and who won what in each, with voided rounds, per-player totals, and a portable ndjson export. Server, Apple and Android.",
+  "facilities": [
+    {
+      "id": "round-history",
+      "description": "Append rounds, keep the newest N, query and export them"
+    }
+  ],
+  "provides": [
+    {
+      "id": "round-history",
+      "type": "ae/round-history",
+      "version": "1.0.0",
+      "path": "interfaces/round-history.json"
+    }
+  ],
+  "requires": [],
+  "collect": [
+    {
+      "id": "maxRounds",
+      "type": "integer",
+      "grammar": "integer",
+      "required": false,
+      "secret": false,
+      "default": 50
+    }
+  ],
+  "dependencies": [],
+  "platforms": [
+    "server",
+    "apple",
+    "android"
+  ],
+  "keepsData": true,
+  "tools": {
+    "node": "26.5.0",
+    "python3": "3.12.8",
+    "swiftc": "6.4.2",
+    "kotlinc": "2.2.0",
+    "java": "26.0.1"
+  },
+  "suites": [
+    {
+      "id": "web",
+      "argv": [
+        "node",
+        "--test",
+        "tests/web.test.ts"
+      ]
+    },
+    {
+      "id": "apple",
+      "argv": [
+        "python3",
+        "tests/native.py",
+        "apple"
+      ],
+      "scope": "platform",
+      "tools": {
+        "python3": "3.12.8",
+        "swiftc": "6.4.2"
+      },
+      "fixtures": [
+        "tests/apple/main.swift",
+        "tests/fixtures/rounds.json"
+      ]
+    },
+    {
+      "id": "android",
+      "argv": [
+        "python3",
+        "tests/native.py",
+        "android"
+      ],
+      "scope": "platform",
+      "tools": {
+        "python3": "3.12.8",
+        "kotlinc": "2.2.0",
+        "java": "26.0.1"
+      },
+      "fixtures": [
+        "tests/android/Main.kt",
+        "tests/fixtures/rounds.json"
+      ]
+    }
+  ],
+  "text": {
+    "purpose": "Players want to see how the last rounds went. This component keeps a list of rounds, each `{no, level, winners: [{playerId, amount}], voided}`, bounded to the newest `maxRounds` (the oldest fall off). A cancelled round is recorded as voided with no winners. It answers who won how much over the rounds held, finds a round by number, and exports and imports the list as ndjson with a checksum per line. It knows nothing about the game: `level` is simply the stage the round was played at. A game that records its own fields beside the result (the pot, the showdown kind) pushes a plain object and gets the same object back from `list`.",
+    "userInputs": "The installer collects one setting: `maxRounds`, how many rounds to keep (whole number, at least 1; default 50, as in the recipe).",
+    "integration": "The server appends an entry when a round ends (the recipe does this where a hand is settled and where a hand is cancelled) and puts `history.rounds` in the view it sends. Round numbers must rise within one history, so a new game starts a new history with `clearHistory`. Apple and Android clients use `HistoryEntry` to read the list from the view and `RoundHistory` to keep a bounded copy; the Apple type is `Decodable` like the recipe's, the Kotlin classes are plain data classes to which `@Serializable` is added where the wire format is decoded. `turn-engine` requires this interface. The engine form is `create()`, `push(history, {no, level, voided, ...game fields})` and `list(history)` (oldest first); `createHistoryApi({maxRounds})` binds the setting. Game fields are kept in `extra` and must be plain JSON; Apple and Android read the four typed fields and ignore `extra`.",
+    "infrastructure": "No deployed service and no accounts. The history is plain data kept in the game state; export and import move it between hosts.",
+    "verification": "`tests/web.test.ts` (required-local) checks bounds, validation, rising round numbers, voided rounds, totals, queries, ndjson round trip with a tampered line rejected, the engine form (create, push, list with game fields, rising numbers, plain-JSON check, copies, export and import with game fields) and the consumer example. `tests/native.py apple` compiles `RoundHistory.swift` with swiftc, decodes `tests/fixtures/rounds.json` as JSON and checks the bound and totals (run and passed on this machine). `tests/native.py android` does the same with kotlinc; kotlinc is not installed here, so it was written but not run.",
+    "scenarios": "A hold'em tournament shows the last 50 hands. A short party game keeps 10 rounds. A support engineer exports the history of a disputed game. A new game clears the list.",
+    "updates": "Patch updates replace the files only. The ndjson record layout is in `interfaces/round.schema.json` and `migration.json`. After removal, exported files are described by the schema."
+  },
+  "agentInstructions": "Select this component for any game that shows past rounds. Set `maxRounds` from the recipe (hold'em: 50). Connect the provided `round-history` to the turn engine. Include the Apple and Android files only when those client targets are selected.",
+  "developerInstructions": "Keep the `History` in the game state and replace it with each function's result. Append once per finished or cancelled round, with a rising `no`. Do not store card detail here; the history is a result log. No accounts or keys.",
+  "suitability": {
+    "format": 1,
+    "jobs": [
+      "round-history"
+    ],
+    "profiles": [
+      {
+        "id": "any",
+        "load": {},
+        "cost": "none",
+        "regions": [
+          "any"
+        ],
+        "compliance": []
+      }
+    ],
+    "notes": "Pure library; no provider limits apply. 50 rounds is a few kilobytes."
+  }
+}
