@@ -1,39 +1,89 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "ae/round-history ndjson records",
+  "title": "ae/round-history-records",
+  "x-version": "1.0.0",
   "description": "Each line of an export is {kind, record, sha256}. The first line has kind 'history'; the rest have kind 'round', oldest first. sha256 is the hex SHA-256 of JSON.stringify(record).",
   "type": "object",
-  "required": ["kind", "record", "sha256"],
+  "required": [
+    "kind",
+    "record",
+    "sha256"
+  ],
   "additionalProperties": false,
   "properties": {
-    "kind": { "enum": ["history", "round"] },
-    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "kind": {
+      "enum": [
+        "history",
+        "round"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
     "record": {
       "oneOf": [
         {
           "title": "history",
           "type": "object",
-          "required": ["maxRounds"],
+          "required": [
+            "maxRounds"
+          ],
           "additionalProperties": false,
-          "properties": { "maxRounds": { "type": "integer", "minimum": 1 } }
+          "properties": {
+            "maxRounds": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
         },
         {
           "title": "round",
           "type": "object",
-          "required": ["no", "level", "winners", "voided"],
+          "required": [
+            "no",
+            "level",
+            "winners",
+            "voided"
+          ],
           "additionalProperties": false,
           "properties": {
-            "no": { "type": "integer", "minimum": 1, "description": "Round number, rising within a history" },
-            "level": { "type": "integer", "minimum": 1, "description": "Stage the round was played at" },
-            "voided": { "type": "boolean" },
-            "extra": { "type": "object", "description": "Other facts a game keeps about the round (plain JSON); present only when there are some" },
+            "no": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Round number, rising within a history"
+            },
+            "level": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Stage the round was played at"
+            },
+            "voided": {
+              "type": "boolean"
+            },
+            "extra": {
+              "type": "object",
+              "description": "Other facts a game keeps about the round (plain JSON); present only when there are some"
+            },
             "winners": {
               "type": "array",
               "items": {
                 "type": "object",
-                "required": ["playerId", "amount"],
+                "required": [
+                  "playerId",
+                  "amount"
+                ],
                 "additionalProperties": false,
-                "properties": { "playerId": { "type": "string", "minLength": 1 }, "amount": { "type": "integer", "minimum": 0 } }
+                "properties": {
+                  "playerId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "amount": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
               }
             }
           }

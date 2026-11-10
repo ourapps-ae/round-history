@@ -3,7 +3,7 @@
 ## For the agent
 Select this component for any game that shows past rounds. Set `maxRounds` from the recipe (hold'em: 50). Connect the provided `round-history` to the turn engine. Include the Apple and Android files only when those client targets are selected.
 
-- Select package `ourapps-ae/round-history` version `0.3.0`.
+- Select package `ourapps-ae/round-history` version `0.4.0`.
 - Settings to configure:
   - `maxRounds` (integer; optional; default `50`)
 - Connect the provided `round-history` (ae/round-history 1.0.0) to the consumer that needs it.
