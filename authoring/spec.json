@@ -1,6 +1,6 @@
 {
   "name": "round-history",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "title": "Round history",
   "description": "A bounded record of rounds and who won what in each, with voided rounds, per-player totals, and a portable ndjson export. Server, Apple and Android.",
   "facilities": [
