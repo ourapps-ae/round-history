@@ -17,6 +17,12 @@
       "executable": false,
       "source": "implementation/server/history.ts",
       "template": false
+    },
+    {
+      "destination": "components/round-history/server/index.ts",
+      "executable": false,
+      "source": "implementation/server/index.ts",
+      "template": false
     }
   ],
   "capabilities": {
@@ -25,7 +31,8 @@
     "writes": [
       "components/round-history/android/src/main/java/ae/history/RoundHistory.kt",
       "components/round-history/apple/Sources/RoundHistory.swift",
-      "components/round-history/server/history.ts"
+      "components/round-history/server/history.ts",
+      "components/round-history/server/index.ts"
     ]
   },
   "collect": [
@@ -94,6 +101,10 @@
     {
       "executable": false,
       "path": "implementation/server/history.ts"
+    },
+    {
+      "executable": false,
+      "path": "implementation/server/index.ts"
     },
     {
       "executable": false,

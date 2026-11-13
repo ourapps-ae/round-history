@@ -142,3 +142,6 @@ export function importRounds(text: string, settings: Partial<HistorySettings> = 
   if (!history) throw new Error("no history record");
   return rows.reduce(appendRound, history);
 }
+
+// The API createHistoryApi returns.
+export type HistoryApi = ReturnType<typeof createHistoryApi>;
