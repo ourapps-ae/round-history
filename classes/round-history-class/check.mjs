@@ -1,0 +1,12 @@
+import { assert, load } from './runtime.mjs';
+const m = await load('server/index.ts');
+const empty = m.create({ maxRounds: 2 });
+let state = empty;
+for (let no = 1; no <= 3; no++) state = m.appendRound(state, { no, level: 1, winners: [{ playerId: 'a', amount: no }], voided: false });
+assert.deepEqual(m.list(state).map(x => x.no), [2, 3]);
+assert.deepEqual(m.totalsByPlayer(state), { a: { won: 5, rounds: 2 } });
+assert.deepEqual(m.list(empty), []);
+assert.throws(() => m.appendVoided(state, 3, 1));
+assert.deepEqual(m.importRounds(m.exportRounds(state)), state);
+const text = m.exportRounds(state);
+assert.throws(() => m.importRounds(text.replace('"amount":3', '"amount":4')));

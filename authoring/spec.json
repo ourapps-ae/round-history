@@ -1,6 +1,6 @@
 {
   "name": "round-history",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "title": "Round history",
   "description": "A bounded record of rounds and who won what in each, with voided rounds, per-player totals, and a portable ndjson export. Server, Apple and Android.",
   "facilities": [
@@ -30,9 +30,9 @@
   ],
   "dependencies": [],
   "platforms": [
-    "server",
+    "android",
     "apple",
-    "android"
+    "server"
   ],
   "keepsData": true,
   "tools": {
@@ -115,5 +115,148 @@
       }
     ],
     "notes": "Pure library; no provider limits apply. 50 rounds is a few kilobytes."
+  },
+  "classes": [
+    {
+      "reference": {
+        "name": "ourapps-ae/round-history-class",
+        "version": "1.0.0",
+        "digest": "8847e200397343bbc62268d2c7a2d43694f56264441eb471c3fca6fa507b9182"
+      },
+      "descriptor": {
+        "format": 1,
+        "name": "ourapps-ae/round-history-class",
+        "version": "1.0.0",
+        "provides": [
+          {
+            "type": "ae/round-history",
+            "version": "1.0.0",
+            "path": "classes/round-history-class/round-history.json",
+            "modules": {
+              "server": [
+                "server/index.ts"
+              ],
+              "android": [
+                "android/src/main/java"
+              ],
+              "ios": [
+                "apple/Sources"
+              ],
+              "macos": [
+                "apple/Sources"
+              ],
+              "tvos": [
+                "apple/Sources"
+              ]
+            }
+          }
+        ],
+        "requires": [],
+        "settings": {
+          "type": "object",
+          "properties": {
+            "maxRounds": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "maxRounds"
+          ],
+          "additionalProperties": false
+        },
+        "inventory": [
+          {
+            "path": "classes/round-history-class/check.mjs",
+            "digest": "e9c920fbc8e7c742801ebe46acf10f534be7d101e01fca3fe13c1b4b1bbb4ed1"
+          },
+          {
+            "path": "classes/round-history-class/round-history.json",
+            "digest": "dc6e258eda990761554a5374e0255a7e7a2fd60a780d18214ea74e693d8f6654"
+          },
+          {
+            "path": "classes/round-history-class/runtime.mjs",
+            "digest": "7440f3891614c423f74668cb5a2445fea58bbfa4d7c740c8e8a855d1d9300d43"
+          }
+        ],
+        "verification": [
+          {
+            "id": "shared",
+            "root": "package",
+            "argv": [
+              "node",
+              "classes/round-history-class/check.mjs"
+            ],
+            "cwd": ".",
+            "prepare": [],
+            "tools": {
+              "node": "26.5"
+            },
+            "fixtures": [
+              "classes/round-history-class/check.mjs"
+            ],
+            "locks": [],
+            "network": false,
+            "timeoutSeconds": 60,
+            "expectedExit": 0,
+            "scope": "required-local",
+            "requirements": []
+          }
+        ]
+      }
+    }
+  ],
+  "implements": [
+    {
+      "name": "ourapps-ae/round-history-class",
+      "version": "1.0.0",
+      "digest": "8847e200397343bbc62268d2c7a2d43694f56264441eb471c3fca6fa507b9182"
+    }
+  ],
+  "upstream": [],
+  "compatibility": {
+    "runtimes": {
+      "node": ">=26.5.0 <27.0.0",
+      "swift": "=6.4.2",
+      "ios": ">=17.0.0",
+      "macos": ">=14.0.0",
+      "tvos": ">=17.0.0",
+      "kotlin": "=2.3.20",
+      "java": ">=17.0.0 <27.0.0",
+      "android": ">=8.0.0"
+    },
+    "frameworks": {},
+    "dependencies": [],
+    "styles": {
+      "scope": "none",
+      "namespaces": [],
+      "conflicts": []
+    }
+  },
+  "maintenance": {
+    "owners": [
+      "Level N Ltd"
+    ],
+    "contact": "https://github.com/ourapps-ae/round-history/issues",
+    "repository": "https://github.com/ourapps-ae/round-history",
+    "updates": {
+      "source": "https://github.com/ourapps-ae/round-history/releases",
+      "strategy": "manual"
+    }
+  },
+  "supportedPlatforms": [
+    "android",
+    "ios",
+    "macos",
+    "server",
+    "tvos"
+  ],
+  "licence": "Apache-2.0",
+  "licenceFile": "LICENCE",
+  "noticeFile": "NOTICE",
+  "templates": [],
+  "modules": {
+    "server": "server/index.ts",
+    "android": "android/src/main/java",
+    "apple": "apple/Sources"
   }
 }
