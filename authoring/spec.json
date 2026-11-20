@@ -1,6 +1,6 @@
 {
   "name": "round-history",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "title": "Round history",
   "description": "A bounded record of rounds and who won what in each, with voided rounds, per-player totals, and a portable ndjson export. Server, Apple and Android.",
   "facilities": [
@@ -120,13 +120,17 @@
     {
       "reference": {
         "name": "ourapps-ae/round-history-class",
-        "version": "1.0.0",
-        "digest": "8847e200397343bbc62268d2c7a2d43694f56264441eb471c3fca6fa507b9182"
+        "version": "1.1.0",
+        "digest": "2816edbe02811a5d411d54f1f7dabc99aeed613d1b7bae28a55f1ce109127d2b"
       },
       "descriptor": {
-        "format": 1,
+        "format": 2,
         "name": "ourapps-ae/round-history-class",
-        "version": "1.0.0",
+        "version": "1.1.0",
+        "title": "Round history",
+        "summary": "A bounded record of completed rounds with totals, exportable and checked",
+        "category": "data-and-storage/history-and-audit",
+        "presentation": "none",
         "provides": [
           {
             "type": "ae/round-history",
@@ -208,8 +212,8 @@
   "implements": [
     {
       "name": "ourapps-ae/round-history-class",
-      "version": "1.0.0",
-      "digest": "8847e200397343bbc62268d2c7a2d43694f56264441eb471c3fca6fa507b9182"
+      "version": "1.1.0",
+      "digest": "2816edbe02811a5d411d54f1f7dabc99aeed613d1b7bae28a55f1ce109127d2b"
     }
   ],
   "upstream": [],
@@ -220,7 +224,7 @@
       "ios": ">=17.0.0",
       "macos": ">=14.0.0",
       "tvos": ">=17.0.0",
-      "kotlin": "=2.3.20",
+      "kotlin": "=2.4.21",
       "java": ">=17.0.0 <27.0.0",
       "android": ">=8.0.0"
     },
@@ -440,5 +444,11 @@
         "manual": null
       }
     ]
-  }
+  },
+  "release": {
+    "channel": "features",
+    "fixes": []
+  },
+  "images": [],
+  "vulnerabilityWaivers": []
 }
