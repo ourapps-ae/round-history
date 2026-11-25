@@ -1,6 +1,6 @@
 {
   "name": "round-history",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "title": "Round history",
   "description": "A bounded record of rounds and who won what in each, with voided rounds, per-player totals, and a portable ndjson export. Server, Apple and Android.",
   "facilities": [
@@ -36,11 +36,11 @@
   ],
   "keepsData": true,
   "tools": {
-    "node": "26.5.0",
-    "python3": "3.12.8",
-    "swiftc": "6.4.2",
-    "kotlinc": "2.2.0",
-    "java": "26.0.1"
+    "node": "26.5",
+    "python3": "3.12",
+    "swiftc": "6.4",
+    "kotlinc": "2.2",
+    "java": "26.0"
   },
   "suites": [
     {
@@ -60,8 +60,8 @@
       ],
       "scope": "platform",
       "tools": {
-        "python3": "3.12.8",
-        "swiftc": "6.4.2"
+        "python3": "3.12",
+        "swiftc": "6.4"
       },
       "fixtures": [
         "tests/apple/main.swift",
@@ -77,9 +77,9 @@
       ],
       "scope": "platform",
       "tools": {
-        "python3": "3.12.8",
-        "kotlinc": "2.2.0",
-        "java": "26.0.1"
+        "java": "26.0",
+        "kotlinc": "2.2",
+        "python3": "3.12"
       },
       "fixtures": [
         "tests/android/Main.kt",
@@ -119,13 +119,13 @@
   "classes": [
     {
       "reference": {
-        "name": "ourapps-ae/round-history-class",
+        "name": "clodhub/round-history-class",
         "version": "1.1.0",
-        "digest": "2816edbe02811a5d411d54f1f7dabc99aeed613d1b7bae28a55f1ce109127d2b"
+        "digest": "c598d4a410cea4017fa138c7b41ecdc42109d2b6a5e886ecc97edbc8b0ecdb01"
       },
       "descriptor": {
         "format": 2,
-        "name": "ourapps-ae/round-history-class",
+        "name": "clodhub/round-history-class",
         "version": "1.1.0",
         "title": "Round history",
         "summary": "A bounded record of completed rounds with totals, exportable and checked",
@@ -175,7 +175,7 @@
           },
           {
             "path": "classes/round-history-class/round-history.json",
-            "digest": "dc6e258eda990761554a5374e0255a7e7a2fd60a780d18214ea74e693d8f6654"
+            "digest": "889a9ac3b81db829c96bd47b9ad323f98f85d99c61cacf4fb6bb57b1b7afd36c"
           },
           {
             "path": "classes/round-history-class/runtime.mjs",
@@ -211,9 +211,9 @@
   ],
   "implements": [
     {
-      "name": "ourapps-ae/round-history-class",
+      "name": "clodhub/round-history-class",
       "version": "1.1.0",
-      "digest": "2816edbe02811a5d411d54f1f7dabc99aeed613d1b7bae28a55f1ce109127d2b"
+      "digest": "c598d4a410cea4017fa138c7b41ecdc42109d2b6a5e886ecc97edbc8b0ecdb01"
     }
   ],
   "upstream": [],
@@ -240,10 +240,10 @@
     "owners": [
       "Level N Ltd"
     ],
-    "contact": "https://github.com/ourapps-ae/round-history/issues",
-    "repository": "https://github.com/ourapps-ae/round-history",
+    "contact": "https://github.com/clodhub/round-history/issues",
+    "repository": "https://github.com/clodhub/round-history",
     "updates": {
-      "source": "https://github.com/ourapps-ae/round-history/releases",
+      "source": "https://github.com/clodhub/round-history/releases",
       "strategy": "manual"
     }
   },

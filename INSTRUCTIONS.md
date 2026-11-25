@@ -3,7 +3,7 @@
 ## For the agent
 Select this component for any game that shows past rounds. Set `maxRounds` from the recipe (hold'em: 50). Connect the provided `round-history` to the turn engine. Include the Apple and Android files only when those client targets are selected.
 
-- Select package `ourapps-ae/round-history` version `0.9.0`.
+- Select package `clodhub/round-history` version `0.10.0`.
 - Settings to configure:
   - `maxRounds` (integer; optional; default `50`)
 - Connect the provided `round-history` (ae/round-history 1.0.0) to the consumer that needs it.
@@ -18,4 +18,4 @@ From the component directory:
 - `node --test tests/web.test.ts` (web, required-local; tools: node 26.5)
 - `python3 tests/native.py apple` (apple, platform; tools: python3 3.12, swiftc 6.4)
 - `python3 tests/native.py android` (android, platform; tools: python3 3.12, kotlinc 2.2, java 26.0)
-- `python3 -m aepm review <digest> --store STORE --policy POLICY --trusted --allow-network` checks an archive fetched with `python3 -m aepm fetch ourapps-ae/round-history@VERSION --store STORE --from https://ourapps.app` and runs its suites.
+- `python3 -m aepm review <digest> --store STORE --policy POLICY --trusted --allow-network` checks an archive fetched with `python3 -m aepm fetch clodhub/round-history@VERSION --store STORE --from https://clodhub.com` and runs its suites.

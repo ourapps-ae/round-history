@@ -7,12 +7,12 @@
   "focus": "component",
   "definitions": [
     {
-      "id": "ourapps-ae.round-history",
+      "id": "clodhub.round-history",
       "name": "Round history",
       "kind": "component",
       "status": "example",
-      "package": "ourapps-ae/round-history",
-      "version": "0.9.0",
+      "package": "clodhub/round-history",
+      "version": "0.10.0",
       "ports": [
         {
           "id": "round-history",
@@ -59,7 +59,7 @@
     {
       "id": "component",
       "name": "Round history",
-      "definition": "ourapps-ae.round-history",
+      "definition": "clodhub.round-history",
       "configuration": {}
     },
     {

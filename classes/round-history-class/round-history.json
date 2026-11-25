@@ -199,7 +199,7 @@
           "$ref": "#/components/schemas/HistorySettings"
         }
       },
-      "x-ourapps-property": true,
+      "x-clodhub-property": true,
       "tags": [
         {
           "name": "typescript"
@@ -1083,7 +1083,7 @@
       }
     }
   },
-  "x-ourapps-modules": {
+  "x-clodhub-modules": {
     "server": "server/index.ts",
     "android": "android/src/main/java",
     "apple": "apple/Sources"
