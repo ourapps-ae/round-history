@@ -7,19 +7,19 @@
   "focus": "component",
   "definitions": [
     {
-      "id": "clodhub.round-history",
+      "id": "com.clodhub.round-history",
       "name": "Round history",
       "kind": "component",
       "status": "example",
-      "package": "clodhub/round-history",
-      "version": "0.10.0",
+      "package": "pkg:clod/com.clodhub/round-history",
+      "version": "0.11.0",
       "ports": [
         {
           "id": "round-history",
           "name": "Round history",
           "direction": "output",
           "kind": "interface",
-          "type": "ae/round-history",
+          "type": "com.clodhub/round-history",
           "version": "1.0.0"
         }
       ],
@@ -46,7 +46,7 @@
           "name": "Round history",
           "direction": "input",
           "kind": "interface",
-          "type": "ae/round-history",
+          "type": "com.clodhub/round-history",
           "version": "1.0.0",
           "required": true,
           "cardinality": "one"
@@ -59,7 +59,7 @@
     {
       "id": "component",
       "name": "Round history",
-      "definition": "clodhub.round-history",
+      "definition": "com.clodhub.round-history",
       "configuration": {}
     },
     {

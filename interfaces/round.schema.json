@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "ae/round-history-records",
+  "title": "com.clodhub/round-history-records",
   "x-version": "1.0.0",
   "description": "Each line of an export is {kind, record, sha256}. The first line has kind 'history'; the rest have kind 'round', oldest first. sha256 is the hex SHA-256 of JSON.stringify(record).",
   "type": "object",

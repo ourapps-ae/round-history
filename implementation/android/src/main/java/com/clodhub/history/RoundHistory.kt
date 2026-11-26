@@ -1,4 +1,4 @@
-package ae.history
+package com.clodhub.history
 
 // A round's result as the server sends it in the view's `history` list. Add kotlinx.serialization's
 // @Serializable to both classes when decoding the wire format directly (the recipe does).

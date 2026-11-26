@@ -1,6 +1,6 @@
-import ae.history.HistoryEntry
-import ae.history.HistoryWinner
-import ae.history.RoundHistory
+import com.clodhub.history.HistoryEntry
+import com.clodhub.history.HistoryWinner
+import com.clodhub.history.RoundHistory
 import java.io.File
 
 // The fixture keeps one entry per line, so a line pattern is enough to read it without a JSON library.

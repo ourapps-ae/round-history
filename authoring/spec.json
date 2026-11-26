@@ -1,6 +1,7 @@
 {
   "name": "round-history",
-  "version": "0.10.0",
+  "version": "0.11.0",
+  "sourceRevision": "19905b75dbea89fbfd424d67fe26c81aaed0e018",
   "title": "Round history",
   "description": "A bounded record of rounds and who won what in each, with voided rounds, per-player totals, and a portable ndjson export. Server, Apple and Android.",
   "facilities": [
@@ -12,7 +13,7 @@
   "provides": [
     {
       "id": "round-history",
-      "type": "ae/round-history",
+      "type": "com.clodhub/round-history",
       "version": "1.0.0",
       "path": "interfaces/round-history.json"
     }
@@ -119,13 +120,13 @@
   "classes": [
     {
       "reference": {
-        "name": "clodhub/round-history-class",
+        "name": "pkg:clod/com.clodhub/round-history-class",
         "version": "1.1.0",
-        "digest": "c598d4a410cea4017fa138c7b41ecdc42109d2b6a5e886ecc97edbc8b0ecdb01"
+        "digest": "be35662dd6da7fc948179a69999ad353c479754eb694a9f57ac95803bd8e3b58"
       },
       "descriptor": {
-        "format": 2,
-        "name": "clodhub/round-history-class",
+        "format": 3,
+        "name": "pkg:clod/com.clodhub/round-history-class",
         "version": "1.1.0",
         "title": "Round history",
         "summary": "A bounded record of completed rounds with totals, exportable and checked",
@@ -133,7 +134,7 @@
         "presentation": "none",
         "provides": [
           {
-            "type": "ae/round-history",
+            "type": "com.clodhub/round-history",
             "version": "1.0.0",
             "path": "classes/round-history-class/round-history.json",
             "modules": {
@@ -175,11 +176,11 @@
           },
           {
             "path": "classes/round-history-class/round-history.json",
-            "digest": "889a9ac3b81db829c96bd47b9ad323f98f85d99c61cacf4fb6bb57b1b7afd36c"
+            "digest": "46274794f58c35e659b095d822f1a25ec0fe8cc69fbc7941cc1f08252c95f6ca"
           },
           {
             "path": "classes/round-history-class/runtime.mjs",
-            "digest": "7440f3891614c423f74668cb5a2445fea58bbfa4d7c740c8e8a855d1d9300d43"
+            "digest": "1d85f0dae92d5c6c859cd48a4211a933718ae3e168554a2b00806183c4b661f0"
           }
         ],
         "verification": [
@@ -211,9 +212,9 @@
   ],
   "implements": [
     {
-      "name": "clodhub/round-history-class",
+      "name": "pkg:clod/com.clodhub/round-history-class",
       "version": "1.1.0",
-      "digest": "c598d4a410cea4017fa138c7b41ecdc42109d2b6a5e886ecc97edbc8b0ecdb01"
+      "digest": "be35662dd6da7fc948179a69999ad353c479754eb694a9f57ac95803bd8e3b58"
     }
   ],
   "upstream": [],

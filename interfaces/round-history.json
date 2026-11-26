@@ -1,9 +1,9 @@
 {
   "openrpc": "1.3.2",
   "info": {
-    "title": "ae/round-history",
+    "title": "com.clodhub/round-history",
     "version": "1.0.0",
-    "description": "A bounded record of rounds and their results: the oldest rounds fall off the end. No game knowledge. Two forms of the same history: typed (appendRound with a RoundEntry) and the engine's (push a plain object, list plain objects) for a game that records its own fields beside the result; those fields are stored in RoundEntry.extra and flattened again by list. Every function returns a new history. Server: TypeScript `implementation/server/history.ts`; methods named `HistoryApi.<name>` are members of the object createHistoryApi returns. Clients: Swift `RoundHistory` (`implementation/apple/Sources/RoundHistory.swift`) and Kotlin `ae.history.RoundHistory` hold HistoryEntry values decoded from a view's `history` list (no, level, winners, voided; game fields ignored); methods named `RoundHistory.<name>` are theirs."
+    "description": "A bounded record of rounds and their results: the oldest rounds fall off the end. No game knowledge. Two forms of the same history: typed (appendRound with a RoundEntry) and the engine's (push a plain object, list plain objects) for a game that records its own fields beside the result; those fields are stored in RoundEntry.extra and flattened again by list. Every function returns a new history. Server: TypeScript `implementation/server/history.ts`; methods named `HistoryApi.<name>` are members of the object createHistoryApi returns. Clients: Swift `RoundHistory` (`implementation/apple/Sources/RoundHistory.swift`) and Kotlin `com.clodhub.history.RoundHistory` hold HistoryEntry values decoded from a view's `history` list (no, level, winners, voided; game fields ignored); methods named `RoundHistory.<name>` are theirs."
   },
   "methods": [
     {
@@ -632,7 +632,7 @@
     },
     {
       "name": "exportRounds",
-      "description": "Newline-delimited JSON: the settings first, then one line per round, oldest first; each line carries the SHA-256 of its record (records: ae/round-history-records document).",
+      "description": "Newline-delimited JSON: the settings first, then one line per round, oldest first; each line carries the SHA-256 of its record (records: com.clodhub/round-history-records document).",
       "paramStructure": "by-position",
       "params": [
         {

@@ -13,7 +13,7 @@ The installer collects one setting: `maxRounds`, how many rounds to keep (whole 
 ## Artefacts and dependencies
 `component.json` maps every `implementation/` source into `components/round-history/`:
 
-- `implementation/android/src/main/java/ae/history/RoundHistory.kt` -> `components/round-history/android/src/main/java/ae/history/RoundHistory.kt`
+- `implementation/android/src/main/java/com/clodhub/history/RoundHistory.kt` -> `components/round-history/android/src/main/java/com/clodhub/history/RoundHistory.kt`
 - `implementation/apple/Sources/RoundHistory.swift` -> `components/round-history/apple/Sources/RoundHistory.swift`
 - `implementation/server/history.ts` -> `components/round-history/server/history.ts`
 
@@ -21,8 +21,8 @@ Dependencies: none.
 `tools.lock.json` pins verification tools: node 26.5, python3 3.12, swiftc 6.4, kotlinc 2.2, java 26.0. Licence: `Apache-2.0` (`LICENCE`, `NOTICE`).
 
 ## Provided interfaces
-- `interfaces/round-history.json` defines `round-history` (ae/round-history) version 1.0.0: an OpenRPC 1.3.2 document, one method per function (a member of a created object is `<Type>.<member>`), with parameter, result and data types as JSON Schema 2020-12 (`components.schemas`) and thrown errors under `errors`.
-- `interfaces/round.schema.json` (ae/round-history-records 1.0.0) is a JSON Schema 2020-12 document of one line of the ndjson export.
+- `interfaces/round-history.json` defines `round-history` (com.clodhub/round-history) version 1.0.0: an OpenRPC 1.3.2 document, one method per function (a member of a created object is `<Type>.<member>`), with parameter, result and data types as JSON Schema 2020-12 (`components.schemas`) and thrown errors under `errors`.
+- `interfaces/round.schema.json` (com.clodhub/round-history-records 1.0.0) is a JSON Schema 2020-12 document of one line of the ndjson export.
 
 ## Required interfaces
 None.

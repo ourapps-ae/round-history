@@ -4,7 +4,7 @@
     {
       "id": "rounds",
       "schema": {
-        "name": "ae/round-history-records",
+        "name": "com.clodhub/round-history-records",
         "version": "1.0.0",
         "file": "interfaces/round.schema.json"
       }
